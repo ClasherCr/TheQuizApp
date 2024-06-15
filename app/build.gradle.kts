@@ -33,6 +33,9 @@ android {
 
 dependencies {
 
+
+
+
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
@@ -40,4 +43,17 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+    val lifecycle_version = "2.8.2"
+    //noinspection UseTomlInstead
+    implementation("androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version")
+    //noinspection UseTomlInstead
+    implementation("androidx.lifecycle:lifecycle-livedata:$lifecycle_version")
+    //noinspection UseTomlInstead
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    //noinspection UseTomlInstead
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+
+
+
 }
