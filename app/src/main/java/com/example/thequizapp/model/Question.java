@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Question {
 
-    @SerializedName("question")
+
     @Expose
     private String question;
     @SerializedName("option1")
