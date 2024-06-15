@@ -1,6 +1,7 @@
 package com.example.thequizapp;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
@@ -86,6 +87,13 @@ public class MainActivity extends AppCompatActivity {
 
         @SuppressLint("SetTextI18n")
         public void DisplayNextQuestions(){
+
+            if (binding.btnNext.getText().equals("Finish")){
+                Intent i = new Intent(MainActivity.this, ResultsActivity.class);
+                startActivity(i);
+                finish();
+            }
+
             int selectedOption = binding.radiogroup.getCheckedRadioButtonId();
             if (selectedOption != -1){
                 RadioButton radioButton = findViewById(selectedOption);

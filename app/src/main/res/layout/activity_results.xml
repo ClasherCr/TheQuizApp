@@ -48,6 +48,7 @@
         android:layout_margin="40dp"
         android:backgroundTint="#1B90AA"
         android:text="Go Back"
+        android:id="@+id/btnBack"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
