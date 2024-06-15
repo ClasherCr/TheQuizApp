@@ -2,6 +2,9 @@ package com.example.thequizapp;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.RadioButton;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -55,6 +58,13 @@ public class MainActivity extends AppCompatActivity {
                 .get(QuizViewModel.class);
         DisplayFirstQuestion();
 
+        binding.btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
     }
 
     public void DisplayFirstQuestion() {
@@ -71,6 +81,52 @@ public class MainActivity extends AppCompatActivity {
                 binding.radio4.setText(questions.get(0).getOption4());
             }
         });
+        }
+
+        @SuppressLint("SetTextI18n")
+        public void DisplayNextQuestions(){
+            int selectedOption = binding.radiogroup.getCheckedRadioButtonId();
+            if (selectedOption != -1){
+                RadioButton radioButton = findViewById(selectedOption);
+
+                if ((questionsList.size() - i) > 0){
+                    totalQuestions = questionsList.size();
+
+                    if (radioButton.getText().toString().equals(questionsList.get(i).getCorrectOption()
+                    )){
+                        result++;
+                        binding.txtQuestion.setText("Correct Answer : "+result);
+                    }
+                    if (i ==0){
+                        i++;
+                    }
+
+                    binding.txtQuestion.setText("Question "+(i+1)+" : "+questionsList.get(i).getQuestion());
+
+                    binding.radio1.setText(questionsList.get(i).getOption1());
+                    binding.radio2.setText(questionsList.get(i).getOption2());
+                    binding.radio3.setText(questionsList.get(i).getOption3());
+                    binding.radio4.setText(questionsList.get(i).getOption4());
+
+
+                    if (i == (questionsList.size() -1)){
+                        binding.btnNext.setText("Finish");
+                    }
+
+                    binding.radiogroup.clearCheck();
+                    i++;
+
+
+                }else {
+                    if (radioButton.getText().toString().equals(questionsList.get(i=1).getCorrectOption())){
+                        result++;
+                        binding.txtResult.setText("Correct Answer : "+result);
+                    }
+                }
+            }else {
+                Toast.makeText(this, "Please select an option", Toast.LENGTH_SHORT).show();
+            }
+
         }
 }
 
