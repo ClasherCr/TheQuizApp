@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         binding.btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DisplayNextQuestions();
 
             }
         });
